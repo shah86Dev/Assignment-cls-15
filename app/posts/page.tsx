@@ -1,5 +1,6 @@
 // pages/index.tsx
 "use client";
+import Link from "next/link";
 import { useState, useEffect } from "react";
 
 type Post = {
@@ -8,7 +9,7 @@ type Post = {
   body: string;
 };
 
-export default function Home() {
+export default function Posts() {
   const [items, setItems] = useState<Post[]>([]);
   const [loading, setLoading] = useState<boolean>(true);
 
@@ -41,6 +42,7 @@ export default function Home() {
           >
             <h2 className="text-lg font-bold mb-2">{item.title}</h2>
             <p className="text-gray-700">{item.body}</p>
+            <Link href={`/dposts/${item.id}`} className="text-blue-500 hover:underline">View Posts</Link>
           </div>
         ))}
       </div>
